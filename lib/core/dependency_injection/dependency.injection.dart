@@ -11,8 +11,8 @@ mixin DependencyInjection {
   static late final AppRouter router;
 
   static List<InjectionInterface> get injectables => [
-        InjectionServices(_di),
         InjectionRepositoiry(_di),
+        InjectionServices(_di),
       ];
 
   static Future<void> init({required AppRouter routerInject}) async {
