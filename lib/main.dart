@@ -1,67 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_mobile/core/dependency_injection/dependency.injection.dart';
+import 'package:graphql_mobile/core/dependency_injection/di.helper.dart';
+import 'package:graphql_mobile/core/router/app.router.gr.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  final _appRouter = AppRouter();
+  await DependencyInjection.init(routerInject: _appRouter);
+
+  runApp(const GraphQLProject());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class GraphQLProject extends StatelessWidget {
+  const GraphQLProject({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'GraphQl Project',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      routerDelegate: DIHelper.router.delegate(),
+      routeInformationParser: DIHelper.router.defaultRouteParser(),
     );
   }
 }
