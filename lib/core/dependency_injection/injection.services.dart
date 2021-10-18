@@ -9,8 +9,6 @@ class InjectionServices implements InjectionInterface {
 
   @override
   Future<void> inject() async {
-    _di.registerLazySingleton<UserService>(
-      () => UserService(repository: _di()),
-    );
+    _di.registerLazySingleton<UserService>(() => UserService(repository: _di()));
   }
 }

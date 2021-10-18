@@ -11,7 +11,11 @@ class UserRepository implements UserRepositoryInterface {
 
   @override
   Future<UserEntity> getUser() async {
-    final query = GraphQLHelper.parserParams(_querys.getUser, {});
+    final query = GraphQLHelper.parserParams(
+      executable: _querys.findUniqueUser,
+      params: {},
+    );
+
     return UserEntity();
   }
 }

@@ -32,6 +32,6 @@ vars:
   runner: flutter pub run build_runner
 
 scripts:
-  g: $clean & $get & $runner build--delete-conflicting-outputs
+  g: $clean & $get & $runner build --delete-conflicting-outputs
   gw: $clean & $get & $runner watch --delete-conflicting-outputs
   cg: $clean & $get
