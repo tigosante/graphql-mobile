@@ -1,13 +1,81 @@
-mixin UserMutations {
-  static String get createOneUser => '''''';
+import 'package:graphql_mobile/data/graphQL/graphql.executable.interface.dart';
 
-  static String get updateOneUser => '''''';
+class UserMutations {
+  GraphqlExecutableInterface get createOneUser => _CreateOneUser();
 
-  static String get deleteOneUser => '''''';
+  GraphqlExecutableInterface get updateOneUser => _UpdateOneUser();
 
-  static String get upsertOneUser => '''''';
+  GraphqlExecutableInterface get deleteOneUser => _DeleteOneUser();
 
-  static String get deleteManyUser => '''''';
+  GraphqlExecutableInterface get upsertOneUser => _UpsertOneUser();
 
-  static String get updateManyUser => '''''';
+  GraphqlExecutableInterface get deleteManyUser => _DeleteManyUser();
+
+  GraphqlExecutableInterface get updateManyUser => _DpdateManyUser();
+}
+
+class _CreateOneUser implements GraphqlExecutableInterface {
+  @override
+  String get executable => "createOneUser";
+
+  @override
+  String get nameExecutable => '''''';
+
+  @override
+  Map<String, dynamic> params = {};
+}
+
+class _UpdateOneUser implements GraphqlExecutableInterface {
+  @override
+  String get executable => "updateOneUser";
+
+  @override
+  String get nameExecutable => '''''';
+
+  @override
+  Map<String, dynamic> params = {};
+}
+
+class _DeleteOneUser implements GraphqlExecutableInterface {
+  @override
+  String get executable => "deleteOneUser";
+
+  @override
+  String get nameExecutable => '''''';
+
+  @override
+  Map<String, dynamic> params = {};
+}
+
+class _UpsertOneUser implements GraphqlExecutableInterface {
+  @override
+  String get executable => "upsertOneUser";
+
+  @override
+  String get nameExecutable => '''''';
+
+  @override
+  Map<String, dynamic> params = {};
+}
+
+class _DeleteManyUser implements GraphqlExecutableInterface {
+  @override
+  String get executable => "deleteManyUser";
+
+  @override
+  String get nameExecutable => '''''';
+
+  @override
+  Map<String, dynamic> params = {};
+}
+
+class _DpdateManyUser implements GraphqlExecutableInterface {
+  @override
+  String get executable => "updateManyUser";
+
+  @override
+  String get nameExecutable => '''''';
+
+  @override
+  Map<String, dynamic> params = {};
 }

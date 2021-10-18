@@ -16,8 +16,9 @@ class AppRouter extends _i2.RootStackRouter {
   @override
   final Map<String, _i2.PageFactory> pagesMap = {
     Home.name: (routeData) {
+      final args = routeData.argsAs<HomeArgs>(orElse: () => const HomeArgs());
       return _i2.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i1.HomeScreen());
+          routeData: routeData, child: _i1.HomeScreen(key: args.key));
     }
   };
 
@@ -26,8 +27,14 @@ class AppRouter extends _i2.RootStackRouter {
 }
 
 /// generated route for [_i1.HomeScreen]
-class Home extends _i2.PageRouteInfo<void> {
-  const Home() : super(name, path: '/');
+class Home extends _i2.PageRouteInfo<HomeArgs> {
+  Home({_i3.Key? key}) : super(name, path: '/', args: HomeArgs(key: key));
 
   static const String name = 'Home';
+}
+
+class HomeArgs {
+  const HomeArgs({this.key});
+
+  final _i3.Key? key;
 }
